@@ -1,0 +1,12 @@
+.frfss
+.frfsm
+scratch/*
+frfs.egg-info/
+metis
+venv
+dist
+build
+doc
+TODO.txt
+examples
+__pycache__
