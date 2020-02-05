@@ -24,6 +24,7 @@ class DGFSSystem(BaseSystem):
     mpiinterscls = DGFSMPIInters
     bbcinterscls = DGFSBCInters
     velocitymeshcls = DGFSVelocityMesh
+    scatteringcls = DGFSScatteringModel
 
     _nqueues = 2
 
@@ -66,7 +67,7 @@ class DGFSSystem(BaseSystem):
 
         # load the scattering model
         smn = cfg.get('scattering-model', 'type')
-        scatteringcls = subclass_where(DGFSScatteringModel, 
+        scatteringcls = subclass_where(self.scatteringcls, 
             scattering_model=smn)
         self.sm = scatteringcls(backend, self.cfg, self.vm)
 
