@@ -240,21 +240,15 @@ class DGFSWallSpecularBCInters(DGFSBCInters):
         isCurved = False
         # check if the norms are same (non-curved surface)
         for cmpt in range(norms.shape[0]):
-            #print(norms[cmpt,:])
-            #print(norms[cmpt,0])
-            #print(norms[cmpt,:]==norms[cmpt,0])
-            #assert np.allclose(norms[cmpt,:], norms[cmpt,0]), (
-            #    "Need non-curved boundaries, rotate line loops!")
             if not np.allclose(norms[cmpt,:], norms[cmpt,0]):
                 isCurved = True
-
         
         tplc = {'ninterfpts': self.ninterfpts}
         self._tpl_c.update(tplc)
 
         ndims=self.ndims
-        if ndims==2:
-            norms = np.vstack((norms, np.zeros((1, self.ninterfpts))))
+        if ndims==2: norms = np.vstack((norms, np.zeros((1, self.ninterfpts))))
+
         ndims=3
         vsize = self._vm.vsize()
         cv = self._vm.cv()
@@ -273,17 +267,12 @@ class DGFSWallSpecularBCInters(DGFSBCInters):
                 dot = np.dot(norm, cv[0:ndims,j])
                 cr = cv[0:ndims,j] - 2*dot*norm
                 diff = cr.reshape(ndims,1)-cv[0:ndims,:]
-                #f0[j,0] = np.argmin(np.sum(np.abs(diff), axis=0))
                 f0[j,0] = np.argmin(np.sum(diff**2, axis=0))
-            #f0 = np.tile(f0[:,0], (self.ninterfpts, 1))
             for fpts in range(self.ninterfpts):
                 f0[:, fpts] = f0[:, 0] 
 
         # some sanity checks (unique reverse map)
-        #sorted_f0 = np.sort(f0[:,0])
-        #print(np.intersect1d(sorted_f0, np.arange(0,vsize)).shape)
         assert np.all(np.sort(f0[:,0])==np.arange(0,vsize)), "Non-unique map"
-        #raise ValueError("")
 
         f0 = f0.reshape(vsize*self.ninterfpts, 1)
         self._d_bnd_f0 = be.const_matrix(f0)
