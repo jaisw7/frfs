@@ -150,7 +150,7 @@ class BaseIntegrator(object):
         self._queue % axnpby(*args[::2])
 
     @memoize
-    def _get_copy_to_reg_kerns(self, rin, fout, **kwargs):
+    def _get_copy_to_reg_kerns(self, inp, out, **kwargs):
         # Transpose from [nregs][neletypes] to [neletypes][nregs]
         transregs = zip(*self._regs)
         fsoln = self.system.eles_scal_upts_inb_full
@@ -158,8 +158,7 @@ class BaseIntegrator(object):
         # Generate an kernel for each element type
         kerns = proxylist([])
         for tr, ftr in zip(transregs, fsoln):
-            #args = list(ftr[:n]) + list(tr[:n])
-            args = list([ftr[rin], tr[fout]])
+            args = list([ftr[inp], tr[out]])
             kerns.append(self.backend.kernel('copy_to_reg', *args, **kwargs))
 
         return kerns
@@ -172,7 +171,7 @@ class BaseIntegrator(object):
         self._queue % copy(*args[2:])
 
     @memoize
-    def _get_copy_from_reg_kerns(self, rin, fout, **kwargs):
+    def _get_copy_from_reg_kerns(self, inp, out, **kwargs):
         # Transpose from [nregs][neletypes] to [neletypes][nregs]
         transregs = zip(*self._regs)
         fsoln = self.system.eles_scal_upts_inb_full
@@ -180,7 +179,7 @@ class BaseIntegrator(object):
         # Generate an kernel for each element type
         kerns = proxylist([])
         for tr, ftr in zip(transregs, fsoln):
-            args = list([tr[rin], ftr[fout]])             
+            args = list([tr[inp], ftr[out]])             
             kerns.append(self.backend.kernel('copy_from_reg',*args,**kwargs))
 
         return kerns
