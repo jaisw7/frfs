@@ -8,7 +8,7 @@ import warnings
 
 class DGFSMomWriterStdPlugin(BasePlugin):
     name = 'dgfsmomwriterstd'
-    systems = ['dgfs']
+    systems = ['dgfs', 'adgfs']
     formulations = ['std']
 
     def _compute_moments_1D(self, intg):

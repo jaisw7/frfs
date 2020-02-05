@@ -11,7 +11,7 @@ from frfs.writers.native import NativeWriter
 
 class DGFSForceStdPlugin(BasePlugin):
     name = 'dgfsforcestd'
-    systems = ['dgfs']
+    systems = ['dgfs', 'adgfs']
     formulations = ['std']
 
     def __init__(self, intg, cfgsect, suffix):

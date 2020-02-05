@@ -7,7 +7,7 @@ from frfs.writers.native import NativeWriter
 
 class DGFSDistWriterStdPlugin(BasePlugin):
     name = 'dgfsdistwriterstd'
-    systems = ['dgfs']
+    systems = ['dgfs', 'adgfs']
     formulations = ['std']
 
     def __init__(self, intg, cfgsect, suffix=None):

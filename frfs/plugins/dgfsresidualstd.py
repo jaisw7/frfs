@@ -8,7 +8,7 @@ from frfs.plugins.base import BasePlugin, init_csv
 
 class DGFSResidualStdPlugin(BasePlugin):
     name = 'dgfsresidualstd'
-    systems = ['dgfs']
+    systems = ['dgfs', 'adgfs']
     formulations = ['std']
 
     def __init__(self, intg, cfgsect, suffix):
