@@ -18,7 +18,7 @@ class BaseStdStepper(BaseStdIntegrator):
 
 
 class StdEulerDGFSStepper(BaseStdStepper):
-    stepper_name = 'euler-dgfs'
+    stepper_name = 'dgfs-euler'
 
     @property
     def _stepper_has_errest(self):
@@ -101,7 +101,7 @@ class StdEulerDGFSStepper(BaseStdStepper):
 
 
 class StdTVDRK2DGFSStepper(BaseStdStepper):
-    stepper_name = 'tvd-rk2-dgfs'
+    stepper_name = 'dgfs-tvd-rk2'
 
     @property
     def _stepper_has_errest(self):
@@ -227,7 +227,7 @@ class StdTVDRK2DGFSStepper(BaseStdStepper):
 
 # need to generalize this
 class StdEulerDGFSBiStepper(BaseStdStepper):
-    stepper_name = 'euler-dgfsbi'
+    stepper_name = 'dgfsbi-euler'
 
     @property
     def _stepper_has_errest(self):
@@ -327,7 +327,7 @@ class StdEulerDGFSBiStepper(BaseStdStepper):
 
 # need to generalize this
 class StdTVDRK2DGFSBiStepper(BaseStdStepper):
-    stepper_name = 'tvd-rk2-dgfsbi'
+    stepper_name = 'dgfsbi-tvd-rk2'
 
     @property
     def _stepper_has_errest(self):
