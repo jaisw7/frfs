@@ -4,6 +4,7 @@ from frfs.integrators import get_integrator
 from frfs.solvers.base import BaseSystem
 from frfs.solvers.dgfs import DGFSSystem
 from frfs.solvers.dgfsbi import DGFSBiSystem
+from frfs.solvers.adgfs import ADGFSSystem
 from frfs.util import subclass_where
 
 
