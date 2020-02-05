@@ -11,9 +11,9 @@ class DGFSBiInitCondition(object, metaclass=ABCMeta):
         self.vm = velocitymesh
         self._nspcs = self.vm.nspcs()
         self._init_vals = None
-
-        print('\nReading initial condition for', name)
+        
         # read model parameters
+        print('\nReading initial condition for', name)
         self.load_parameters(name, **kwargs)
 
         # perform any necessary computation

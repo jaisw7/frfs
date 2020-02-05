@@ -22,6 +22,7 @@ class DGFSBiScatteringModel(object, metaclass=ABCMeta):
         self._nspcs = self.vm.nspcs()
 
         # read model parameters
+        print("\n Scattering model -----------------------------")
         self.load_parameters()
 
         # perform any necessary computation
