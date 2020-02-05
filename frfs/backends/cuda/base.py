@@ -28,10 +28,11 @@ class CUDABackend(BaseBackend):
             os.environ['CUDA_DEVICE'] = devord
 
         # Create a CUDA context
-        #from pycuda.autoinit import context
-        #import pycuda.driver as cuda
+        from pycuda.autoinit import context
+        import pycuda.driver as cuda
 
         # Aforementioned commented lines do not work for multiple gpus/node
+        """
         if devid == 'local-rank':
             import pycuda.driver as cuda            
             cuda.init()
@@ -42,6 +43,7 @@ class CUDABackend(BaseBackend):
         elif devid == 'round-robin':
             from pycuda.autoinit import context
             import pycuda.driver as cuda
+        """
 
         # Take the required alignment to be 128 bytes
         self.alignb = 128
