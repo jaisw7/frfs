@@ -8,7 +8,7 @@
 
 int vidx = (int) varidx;
 int ridx = 0;
-fpdtype_t fac = 0;
+//fpdtype_t fac = 0;
 
 % for i in range(nvars):
     ridx = (int) bnd_f0_v[X_IDX + (${i}+vidx)*${c['ninterfpts']}];
