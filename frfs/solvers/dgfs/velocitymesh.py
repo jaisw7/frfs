@@ -13,6 +13,7 @@ class DGFSVelocityMesh(object):
         self.cfg = cfg
 
         # Construct the velocity mesh
+        print("\n Velocity mesh -----------------------------")
         self._construct_velocity_mesh()
 
         # Load the quadrature points (for integration) 

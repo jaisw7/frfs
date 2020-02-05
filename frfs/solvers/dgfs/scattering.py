@@ -20,6 +20,7 @@ class DGFSScatteringModel(object, metaclass=ABCMeta):
         self.vm = velocitymesh
 
         # read model parameters
+        print("\n Scattering model -----------------------------")
         self.load_parameters()
 
         # perform any necessary computation

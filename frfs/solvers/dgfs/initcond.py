@@ -12,6 +12,7 @@ class DGFSInitCondition(object, metaclass=ABCMeta):
         self._init_vals = None
 
         # read model parameters
+        print('\nReading initial condition for', name)
         self.load_parameters(name)
 
         # perform any necessary computation
