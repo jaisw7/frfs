@@ -14,37 +14,34 @@ class CUDABackend(BaseBackend):
         super().__init__(cfg)
 
         # Get the desired CUDA device
-        devid = cfg.get('backend-cuda', 'device-id', 'round-robin')
+        devid = cfg.get('backend-cuda', 'device-id', 'local-rank')
         if not re.match(r'(round-robin|local-rank|\d+)$', devid):
             raise ValueError('Invalid device-id')
-
-        # Handle the local-rank case
-        if devid == 'local-rank':
-            devid = str(get_local_rank())
 
         # In the non round-robin case set CUDA_DEVICE to be the desired
         # CUDA device number (used by pycuda.autoinit)
         os.environ.pop('CUDA_DEVICE', None)
-        if devid != 'round-robin':
-            os.environ['CUDA_DEVICE'] = devid
+
+        # Handle the local-rank case
+        if devid == 'local-rank':
+            devord = str(get_local_rank())
+            os.environ['CUDA_DEVICE'] = devord
 
         # Create a CUDA context
         #from pycuda.autoinit import context
         #import pycuda.driver as cuda
 
-        #"""
-        # Aforementioned commented lines do not work on brown
-        if devid != 'round-robin':
+        # Aforementioned commented lines do not work for multiple gpus/node
+        if devid == 'local-rank':
             import pycuda.driver as cuda            
             cuda.init()
-            cudadevice = cuda.Device(int(devid))
+            cudadevice = cuda.Device(int(devord))
             context = cudadevice.make_context()
             #import atexit
             #atexit.register(context.pop)
         elif devid == 'round-robin':
             from pycuda.autoinit import context
             import pycuda.driver as cuda
-        #"""
 
         # Take the required alignment to be 128 bytes
         self.alignb = 128
@@ -64,6 +61,7 @@ class CUDABackend(BaseBackend):
         # declare its preference) we set the global default to
         # PREFER_SHARED.
         context.set_cache_config(cuda.func_cache.PREFER_SHARED)
+        #self.context = context
 
         from frfs.backends.cuda import (blasext, cublas, gimmik, packing,
                                         provider, types)
