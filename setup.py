@@ -49,6 +49,10 @@ modules = [
     'frfs.solvers.dgfsbi.kernels.bcs',
     'frfs.solvers.dgfsbi.kernels.rsolvers',
     'frfs.solvers.dgfsbi.kernels.scattering'
+
+    'frfs.solvers.adgfs',
+    'frfs.solvers.adgfs.kernels',
+    'frfs.solvers.adgfs.kernels.scattering',
 ]
 
 # Data
@@ -78,6 +82,9 @@ package_data = {
     'frfs.solvers.dgfsbi.kernels.bcs': ['*.mako'],
     'frfs.solvers.dgfsbi.kernels.rsolvers': ['*.mako'],
     'frfs.solvers.dgfsbi.kernels.scattering': ['*.mako']
+
+    'frfs.solvers.dgfs.kernels': ['*.mako'],
+    'frfs.solvers.dgfs.kernels.scattering': ['*.mako'],
 }
 
 # Additional data
