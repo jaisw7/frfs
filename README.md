@@ -1,7 +1,7 @@
 ### 2D/3D-3V Flux-reconstructed Discontinuous Galerkin Fast Spectral (frfs)
 frfs, built atop PyFR, is a *minimal* code for solving single/multi-species 
-Boltzmann equation and related kinetic models on streaming architectures 
-utilizing the high-order flux-reconstructed discontinuous Galerkin schemes.
+Boltzmann equation and related kinetic models on CUDA-enabled GPUs 
+using the high-order flux-reconstructed discontinuous Galerkin schemes.
 
 From a collision modelling viewpoint, we use two methodologies: 
 * the explicit fast spectral schemes for full Boltzmann (as per **[Gamba 2017, Jaiswal 2019a, Jaiswal 2019b]**): the method applies straightforwardly to general collision kernels, and the results can be "directly" compared against DSMC without need of any recalibration or parametric fitting.  
