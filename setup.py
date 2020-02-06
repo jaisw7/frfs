@@ -83,8 +83,8 @@ package_data = {
     'frfs.solvers.dgfsbi.kernels.rsolvers': ['*.mako'],
     'frfs.solvers.dgfsbi.kernels.scattering': ['*.mako']
 
-    'frfs.solvers.dgfs.kernels': ['*.mako'],
-    'frfs.solvers.dgfs.kernels.scattering': ['*.mako'],
+    'frfs.solvers.adgfs.kernels': ['*.mako'],
+    'frfs.solvers.adgfs.kernels.scattering': ['*.mako'],
 }
 
 # Additional data
