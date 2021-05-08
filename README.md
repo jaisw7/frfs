@@ -5,7 +5,7 @@ using the high-order flux-reconstructed discontinuous Galerkin schemes.
 
 From a collision modelling viewpoint, we use two methodologies: 
 * the explicit fast spectral schemes for full Boltzmann (as per **[Gamba 2017, Jaiswal 2019a, Jaiswal 2019b]**): the method applies straightforwardly to general collision kernels, and the results can be "directly" compared against DSMC without need of any recalibration or parametric fitting.  
-* the implicit schemes for linear kinetic models (as per **[Hu 2017, Hu 2019]**): iteration free approach!
+* the implicit schemes for linear kinetic models (as per **[Dimarco 2013, Dimarco 2017]**): iteration free approach!
 
 From a time integration perspective, we use: 
 * 1st/2nd order explicit Strong Stability Preserving (SSP) Runge Kutta (RK) schemes
@@ -16,10 +16,10 @@ The overall schemes are simple from mathematical and implementation perspective;
 ### References:
 * **[Gamba 2017]** Gamba, I. M., Haack, J. R., Hauck, C. D., & Hu, J. (2017). 
   *A fast spectral method for the Boltzmann collision operator with general collision kernels.* SIAM Journal on Scientific Computing, 39(4), B658-B674.
-* **[Hu 2017]** Hu, J., & Zhang, X. (2017). 
-  *On a class of implicit-explicit Runge-Kutta schemes for stiff kinetic equations preserving the Navier-Stokes limit.* Journal of Scientific Computing, 73, 797-818.
-* **[Hu 2019]** Hu, J., & Shu, R. (2019). 
-  *On the uniform accuracy of implicit-explicit backward differentiation formulas (IMEX-BDF) for stiff hyperbolic relaxation systems and kinetic equations.* arXiv preprint: https://arxiv.org/abs/1912.00559.
+* **[Dimarco 2013]** Dimarco, G., & Pareschi, L. (2013). 
+  *Asymptotic preserving implicit-explicit Runge--Kutta methods for nonlinear kinetic equations.* SIAM Journal on Numerical Analysis, 51(2), 1064-1087.
+* **[Dimarco 2017]** Dimarco, G., & Pareschi, L. (2017). 
+  *Implicit-explicit linear multistep methods for stiff kinetic equations.* SIAM Journal on Numerical Analysis, 55(2), 664-690.
 * **[Jaiswal 2019a]** Jaiswal, S., Alexeenko, A. A., and Hu, J. (2019)
   *A discontinuous Galerkin fast spectral method for the full Boltzmann equation with general collision kernels.* Journal of Computational Physics 378: 178-208. https://doi.org/10.1016/j.jcp.2018.11.001
 * **[Jaiswal 2019b]** Jaiswal, S., Alexeenko, A. A., and Hu, J. (2019)
